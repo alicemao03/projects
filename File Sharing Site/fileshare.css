@@ -1,0 +1,98 @@
+body {
+    background-color: #1f2933;
+    color: #f0f4f8;
+    font-size: 16px;
+    font-family: 'Verdana';
+}
+
+.title {
+    font-size: 20px;
+}
+
+.login {
+    text-align: center;
+    border: 1px solid white;
+    padding: 2%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 15%;
+    width: 30%;
+    height: auto;
+}
+
+.enter {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 16px;
+}
+
+.enter:hover {
+    background-color: #1f2933;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.user {
+    font-size: 48px;
+    text-align: left;
+    align-items: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+}
+
+.checkout {
+    float: right;
+}
+
+.checkoutButton {
+    font-size: 20px;
+    padding: 8%;
+}
+
+.checkoutButton:hover {
+    background-color: #1f2933;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.mainDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileStuff {
+    padding: 3%;
+    border: 1px solid white;
+    margin: 3%;
+    margin-top: 1%;
+}
+
+.otherActions {
+    line-height: 28px;
+}
+
+.fileDisplay {
+    padding: 3%;
+    border: 1px solid white;
+    margin: 3%;
+    margin-top: 1%;
+    line-height: 28px;
+}
+
+.button {
+    font-size: 17px;
+    padding: 2%;
+}
+
+.button:hover {
+    background-color: #1f2933;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}

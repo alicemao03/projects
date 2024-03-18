@@ -1,0 +1,139 @@
+body{
+    background-color: #aab9cf;
+    color: #212227;
+    font-size: 16px;
+    font-family: 'Verdana';
+}
+
+hr{
+    border: 1px solid #212227;
+}
+
+.header {
+    background-color: #aab9cf;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    background-color: #aab9cf;
+    font-size: 25px;
+    text-align: left;
+    align-items: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+}
+
+.welcome {
+    text-align: center;
+}
+
+.logout {
+    float: right;
+}
+
+.checkoutButton {
+    font-size: 16px;
+    padding: 10%;
+    background-color: #aab9cf;
+    color: #212227;
+    border: 1px solid #212227;
+}
+
+.checkoutButton:hover {
+    cursor: pointer;
+    color: #aab9cf;
+    background-color: #212227;
+}
+
+.button {
+    font-size: 20px;
+    /* padding: 10%; */
+    background-color: #aab9cf;
+    color: #212227;
+    border: 1px solid #212227;
+}
+
+.button:hover {
+    cursor: pointer;
+    color: #aab9cf;
+    background-color: #212227;
+}
+
+img {
+    width: 200px;
+    height: auto;
+}
+
+.box {
+    text-align: center;
+    border: 2px solid white;
+    padding: 2%;
+    margin: auto;
+    margin-top: 3%;
+    width: 30%;
+    height: auto;
+}
+
+#createBox{
+    width: 80%;
+}
+
+.home{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    text-align: center;
+}
+
+.articleBox{
+    border: #212227 1px solid;
+    margin-bottom: 1%;
+    padding: 1%;
+    width: 30%;
+}
+
+.title{
+    font-size: 24px;
+    text-align: center;
+}
+
+.AuthorAndTime{
+    text-align: center;
+}
+
+.body{
+    text-align: left;
+}
+
+.content{
+    display: flex;
+}
+
+#viewBox{
+    width: 50%;
+}
+.commentPost{
+    border: 1px solid #212227;
+    padding: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.commentBody{
+    text-align: left;
+}
+
+.commentUser{
+    text-align: right;
+}
+.g-recaptcha {
+    text-align: center;
+    margin: auto;
+    margin-top: 3%;
+    width: 35%;
+    height: auto;
+}
+

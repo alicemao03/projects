@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>song data visualization Chart</title>
+
+    <!-- <script type="text/javascript" src="js/d3.v6.min.js"></script> -->
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <!-- <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v3.min.js"></script> -->
+    <script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- https://github.com/Caged/d3-tip -->
+    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+    
+</head>
+
+
+<body id="index">
+    <h1 class="title">Spotify Visualization Graphics</h1>
+    <a href="processbook.html">Process Book</a>
+    <br>
+    <a href="https://youtu.be/o1lmfeqstIw">Demonstration Video</a>
+    <div class="row">
+        <div id="geospatial-map" class="graphic">
+            <div id="tooltip1"
+                style="position: absolute; display: none; background: white; border: 1px solid black; padding: 10px; pointer-events: auto;">
+            </div>
+            <div id="map-controls" style="position: absolute; bottom: 10px; left: 10px;">
+                <button id="zoom_in">+</button>
+                <button id="zoom_out">-</button>
+                <div id="map-legend" style="margin-top: 10px;">
+                    <div>
+                        <span style="background-color: #a1a1a1; width: 20px; height: 20px; display: inline-block;"></span>
+                        <span>Data Available</span>
+                    </div>
+                    <div>
+                        <span style="background-color: #f2f3f4; width: 20px; height: 20px; display: inline-block;"></span>
+                        <span>Sorry, No Data</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <!-- <hr> -->
+    <div class="row" class="content">
+        <div class="col-md-8" class="box">
+            <div id="bubble-map" class="graphic">
+                <h3>Heat Map</h3>
+                <div class="heatmap-options">
+                    <div class="select-rank">
+                        <label for="bubble-rank">Rank:</label>
+                        <select id="bubble-rank-selected" onchange="getPath(); updateCountryList();">
+                            <option value="Daily">Daily</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Viral">Viral</option>
+                        </select>
+                    </div>
+                    <div class="select-country">
+                        <label for="bubble-country">Country:</label>
+                        <select id="bubble-country-selected" onchange="getPath()">
+                        </select>
+                    </div>
+                    <div class="select-feature">
+                        <label for="bubble-feature">Feature:</label>
+                        <select id="bubble-feature-selected" onchange="getPath()">
+                        </select>
+                    </div>
+                </div>
+                <div class="descritpion"></div>
+                <br>
+                <div id="instructions">Please select a name and feature you'd like to explore!</div>
+            </div>
+        </div>
+        <div class="col-md-4" class="box">
+            <div id="comparison" class="graphic">
+                <h3>Comparing Countries</h3>
+                <p> Compare 2 countries based on their daily, weekly, or viral trends. Then click on the
+                    highlighted country on the map to explore the songs! Hover over the feature name to see the
+                    definition of feature.
+                </p>
+                <div class="compare-options">
+                    <p>Ranking Options</p>
+                    <div class="radiobuttons">
+                        <label><input type="radio" name="chartOption" value="Daily" checked
+                                onchange="updateChart('Daily')">Daily</label>
+                        <label><input type="radio" name="chartOption" value="Weekly" onchange="updateChart('Weekly')">
+                            Weekly</label>
+                        <label><input type="radio" name="chartOption" value="Viral" onchange="updateChart('Viral')">
+                            Viral</label>
+                    </div>
+                </div>
+
+
+                <div>
+                    <select class="compare" id="firstCountry"
+                        onchange="updateCountry('firstCountry', this.value)"></select>
+                    VS.
+                    <select class="compare" id="secondCountry"
+                        onchange="updateCountry('secondCountry', this.value)"></select>
+                </div>
+
+                <!-- <button class="compare-btn" name="compare" onclick="compare_country()">Compare</button> -->
+
+                <!-- <svg id="song_chart" width="600" height="500"></svg> -->
+
+                <!-- Create a div where the graph will take place -->
+                <div id="song_chart" width="600" height="500"></div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
+    </div>
+
+
+    <script>
+        const loadData = (url) => {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = `${url}?cb=loadDataCallback`;
+                script.onerror = reject;
+                document.head.appendChild(script);
+
+                window.loadDataCallback = (data) => {
+                    resolve(data);
+                    document.head.removeChild(script);
+                    delete window.loadDataCallback;
+                };
+            });
+        };
+
+        const dailyDataPromise = loadData("./data/merged_data/daily_top50_merged_json.json");
+        const weeklyDataPromise = loadData("./data/merged_data/weekly_top50_merged_json.json");
+        const viralDataPromise = loadData("./data/merged_data/viral_top50_merged_json.json");
+
+        Promise.all([dailyDataPromise, weeklyDataPromise, viralDataPromise])
+            .then(([dailyResult, weeklyResult, viralResult]) => {
+                console.log("aidsfasdfj")
+                daily_top50_all_data = dailyResult;
+                weekly_top50_all_data = weeklyResult;
+                viral_top50_all_data = viralResult;
+
+                console.log("Daily Data:", dailyData.length);
+                console.log("Weekly Data:", weeklyData.length);
+                console.log("Viral Data:Promise");
+
+                // You can call your visualization function or any other logic here
+                initialize_chart();
+            })
+            .catch(error => {
+                console.error("Error loading data:", error);
+            });
+
+
+    </script>
+    <!-- Load color palettes -->
+    <script src="js/loadData.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+ 
+    <script src="js/Dropdown.js"></script>
+    <script src="js/country_comparison.js"></script>
+    <script src="js/Geospatial_Map.js"></script>
+    <script src="js/Bubble_Map.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

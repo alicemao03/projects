@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="welcome" id="welcome">
+            Hello
+            <!-- ADD USER'S NAME IF LOGGED IN -->
+        </div>
+        <div id="create">
+            <!-- <div class="button" id="login">Login</div> -->
+            <div class="button" id="logout">Logout</div>
+        </div>
+        <!-- <div class="addButton">
+            <div class="button" id="register">Register</div>
+        </div> -->
+    </div>
+
+    <div class="menu">
+        <div class="arrows" id="leftArrow"><strong>&larr;</strong></div>
+        <div class="monthName" id="month"></div>
+        <div class="year" id="year"></div>
+        <div class="arrows" id="rightArrow"><strong>&rarr;</strong></div>
+    </div>
+
+    <div class="body">
+        <div class="grid-container">
+            <div class="dayName"><strong>Sunday</strong></div>
+            <div class="dayName"><strong>Monday</strong></div>
+            <div class="dayName"><strong>Tuesday</strong></div>
+            <div class="dayName"><strong>Wednesday</strong></div>
+            <div class="dayName"><strong>Thursday</strong></div>
+            <div class="dayName"><strong>Friday</strong></div>
+            <div class="dayName"><strong>Saturday</strong></div>
+            <div class="grid-item" id="1"></div>
+            <div class="grid-item" id="2"></div>
+            <div class="grid-item" id="3"></div>
+            <div class="grid-item" id="4"></div>
+            <div class="grid-item" id="5"></div>
+            <div class="grid-item" id="6"></div>
+            <div class="grid-item" id="7"></div>
+            <div class="grid-item" id="8"></div>
+            <div class="grid-item" id="9"></div>
+            <div class="grid-item" id="10"></div>
+            <div class="grid-item" id="11"></div>
+            <div class="grid-item" id="12"></div>
+            <div class="grid-item" id="13"></div>
+            <div class="grid-item" id="14"></div>
+            <div class="grid-item" id="15"></div>
+            <div class="grid-item" id="16"></div>
+            <div class="grid-item" id="17"></div>
+            <div class="grid-item" id="18"></div>
+            <div class="grid-item" id="19"></div>
+            <div class="grid-item" id="20"></div>
+            <div class="grid-item" id="21"></div>
+            <div class="grid-item" id="22"></div>
+            <div class="grid-item" id="23"></div>
+            <div class="grid-item" id="24"></div>
+            <div class="grid-item" id="25"></div>
+            <div class="grid-item" id="26"></div>
+            <div class="grid-item" id="27"></div>
+            <div class="grid-item" id="28"></div>
+            <div class="grid-item" id="29"></div>
+            <div class="grid-item" id="30"></div>
+            <div class="grid-item" id="31"></div>
+            <div class="grid-item" id="32"></div>
+            <div class="grid-item" id="33"></div>
+            <div class="grid-item" id="34"></div>
+            <div class="grid-item" id="35"></div>
+            <div class="grid-item" id="36"></div>
+            <div class="grid-item" id="37"></div>
+            <div class="grid-item" id="38"></div>
+            <div class="grid-item" id="39"></div>
+            <div class="grid-item" id="40"></div>
+            <div class="grid-item" id="41"></div>
+            <div class="grid-item" id="42"></div>
+        </div>
+
+        <div id="sideBar">
+            <div class="contentInSideBar">
+
+                <div id="addForm">
+                    <div class="sideBarTitle" id="sideBarAddTitle">Add an Event</div><hr>
+                    <form method='POST'><br>
+                        <label>Event Name: </label><br><input type='text' id='eventName' name='eventName'><br><br>
+                        <label>Start Date: </label><br><input type='date' id='startDate' name='startDate'><br><br>
+                        <label>Start time: </label><br><input type='time' id='startTime' name='startTime'><br><br>
+                        <label>Description: </label><br><textarea id='eventDesc' name="description" rows="5" cols="40"
+                            placeholder='description'></textarea><br><br>
+                        <input class="button" type='submit' value='Add Event' id='eventSubmit' name='submitButton'>
+                        <br><hr>
+                    </form>
+                </div>
+
+                <div id="editForm">
+                    <div class="sideBarTitle">Edit Event</div><hr>
+                    <form method='POST'><br>
+                        <label>Event Name: </label><br><input type='text' id='editEventName' name='editEventName'><br><br>
+                        <label>Start Date: </label><br><input type='date' id='editStartDate' name='editStartDate'><br><br>
+                        <label>Start time: </label><br><input type='time' id='editStartTime' name='editStartTime'><br><br>
+                        <label>Description: </label><br><textarea id='editEventDesc' name="editDescription" rows="5" cols="40"
+                            placeholder='description'></textarea><br><br>
+                        <div class="button" id="submitEditPost">Edit Post</div>
+                        <br><hr>
+                    </form>
+                </div>
+
+                <div id="currentDateEvents">
+                    <div class="sideBarTitle" id="dateTitle"></div>
+                    <hr>
+                    <div id="dateEvents"><br>
+                    </div>
+                    <br><hr>
+                    <div id="shareEvent">
+                        <div class="sideBarTitle">Shared Event!</div>
+                        <div id="shareDate"><br>
+                        </div>
+                    </div>
+                    <br><hr>
+                    <div class="button" id="addEventButton">Add Event</div>
+                </div>
+
+                <div id="registerForm">
+                    <div class="sideBarTitle" id="registerTitle">Register</div><hr>
+                    <form method='POST'><br>
+                        <label>First Name: </label><br><input type='text' id='first_name' name='first_name'><br><br>
+                        <label>Last Name: </label><br><input type='text' id='last_name' name='last_name'><br><br>
+                        <label>Username: </label><br><input type='text' id='username' name='username'><br><br>
+                        <label>Email Address: </label><br><input type='email' id='email' name='email' required><br><br>
+                        <label>Password: </label><br><input type='password' id='pwd' name='pwd'><br><br>
+                        <label>Retype Password:</label><br><input type='password' id='pwd_check'
+                            name='checkpwd'><br><br>
+                        <input class='button' type='submit' value='Register' name='submit' id='registerSubmit'><br><br>
+                    </form>
+                    <br><hr>
+                    <div id="loginLink"><u>Click here already have an account!</u></div>
+                </div>
+
+                <div id="loginForm">
+                    <div class="sideBarTitle" id="loginTitle">Login</div><hr>
+                    <form method="POST"><br>
+                        <label><b>Username: </b><input type="text" id="loginUsername"></label><br><br>
+                        <label><b>Password: </b><input type="text" id="loginPassword"></label><br><br>
+                        <input class="button" type="submit" value="Login" id="loginSubmit"><br>
+                    </form>
+                    <br><hr>
+                    <div id="registerLink"><u>Click here if you don't have an account!</u></div>
+                </div>
+
+                <div id="viewEvent">
+                    <div class="sideBarTitle" id="viewTitle"></div><hr>
+                    <br>
+                    <div class="viewEventBody">
+                        <div id="eventDate"></div>
+                        <div id="eventTime"></div>
+                        <div id="eventDescription"></div>
+                    </div>
+                    <br><hr>
+
+                    <div>
+                        <div class="sideBarTitle">Share this Event!</div>
+                        <textarea id="shareWithUsername" placeholder="Other Person's Username" rows="1" cols="50"></textarea>
+                        <br><div class="button" id="sharePostButton">Share this Post</div>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="button" id="editPostButton">Edit this Post</div>
+                    <div class="button" id="deletePostButton">Delete this Post</div>
+
+                </div>
+
+
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="popup" id="createPopup">
+        <div id="x">x</div>
+    </div> -->
+    <script src="update.js"></script>
+</body>
+
+</html>

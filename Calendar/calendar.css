@@ -1,0 +1,222 @@
+body {
+    margin: 0%;
+    background-color: #61876E;
+}
+
+.header {
+    background-color: #61876E;
+    color: #EAE7B1;
+    font-size: 25px;
+    text-align: center;
+    padding: 0.5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.create {
+    float: left;
+}
+
+.welcome {
+    font-size: 50px;
+    /* float: center; */
+}
+
+.addButton {
+    float: right;
+}
+
+
+.button {
+    padding: 2%;
+    margin-top: 1%;
+    border: 1px solid #EAE7B1;
+    background-color: #61876E;
+    color: #EAE7B1;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    /* width: auto; */
+    text-align: center;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #EAE7B1;
+    color: #3C6255;
+}
+
+.eventButton{
+    padding: 2%;
+    margin-top: 1%;
+    border: 1px solid #EAE7B1;
+    border-radius: 5px;
+    background-color: #61876E;
+    color: #EAE7B1;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.eventButton:hover {
+    cursor: pointer;
+    background-color: #EAE7B1;
+    color: #3C6255;
+}
+
+
+#login {
+    float: left;
+    display: block;
+}
+
+#logout {
+    float: left;
+    display: none;
+}
+
+#register {
+    float: right;
+    display: block;
+}
+
+#registerLink:hover{
+    cursor: pointer;
+}
+
+.menu {
+    background-color: #EAE7B1;
+    color: #3C6255;
+    padding: 0.5%;
+    display: flex;
+    text-align: center;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 48px;
+}
+
+.arrows:hover {
+    color: #61876E;
+    cursor: pointer;
+}
+
+#leftArrow {
+    float: left;
+    padding-left: 3%;
+}
+
+#rightArrow {
+    padding-right: 3%;
+    float: right;
+}
+
+.body {
+    background-color: #61876E;
+    padding: 1%;
+    text-align: center;
+    color: #EAE7B1;
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: auto;
+    width: 60%;
+    float: left;
+    margin-right: 3%;
+}
+
+.grid-item {
+    justify-items: start;
+    padding: 26%;
+    font-size: 30px;
+    border: 1px solid white;
+    width: auto;
+    height: auto;
+}
+
+.grid-item:hover {
+    cursor: pointer;
+    background-color: #609966;
+    color: #EAE7B1;
+}
+
+.dayName {
+    padding-bottom: 2%;
+}
+
+.popup {
+    /* display: none; */
+    width: 65%;
+    height: 65%;
+    position: absolute;
+    left: 17.5%;
+    top: 20%;
+    padding: 3%;
+    background-color: #609966;
+    border: 3px solid white;
+    position: -webkit-sticky;
+}
+
+#createPopup {
+    display: none;
+}
+
+
+#sideBar {
+    float: right;
+    border: 1px solid white;
+    width: 36%;
+    margin-top: 1.5%;
+    overflow: hidden;
+}
+
+.contentInSideBar {
+    margin: 3%;
+}
+
+.sideBarTitle {
+    /* text-decoration: underline; */
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#addForm {
+    display: none;
+}
+
+#currentDateEvents {
+    display: none;
+}
+
+#registerForm {
+    display: none;
+}
+
+#loginForm {
+    display: block;
+}
+
+#viewEvent{
+    display: none;
+}
+
+.viewEventBody{
+    text-align: left;
+}
+
+#editPost{
+    display: none;
+}
+
+#editForm {
+    display: none;
+}
+
+hr{
+    color: #3C6255;
+}
