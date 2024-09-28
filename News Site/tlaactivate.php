@@ -1,21 +1,21 @@
 <?php
-    session_start();
+session_start();
 ?>
 
 <?php
-    $to = 'lisunminus@gmail.com';
+$to = 'lisunminus@gmail.com';
 
-    $subject = 'Email Activation';
+$subject = 'Email Activation';
 
-    $message = 'This is a test message';
+$message = 'This is a test message';
 
-    $message = wordwrap($message, 70, "\r\n");
+$message = wordwrap($message, 70, "\r\n");
 
-    $headers = 'From: tlaNews@noreply.org' . "\r\n";
+$headers = 'From: tlaNews@noreply.org' . "\r\n";
 
-    if(mail($to, $subject, $message, $headers)) {
-        echo "mail sent";
-    }
+if (mail($to, $subject, $message, $headers)) {
+    echo "mail sent";
+}
 
 
 ?>
